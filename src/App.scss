@@ -1,0 +1,219 @@
+$font-light: rgb(135, 135, 135);
+$font-first: rgb(170, 170, 170);
+%flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%font-text {
+  @extend %flex-centered;
+  justify-content: left;
+  font-size: 12pt;
+  font-weight: 100;
+  font-family: Myriad Pro;
+  text-transform: capitalize;
+  color: rgb(85, 85, 85);
+  letter-spacing: 0.5px;
+}
+body {
+  margin: 0;
+  background-color: rgb(22, 22, 22);
+}
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  position: fixed;
+  background-color: rgb(31, 31, 31);
+  width: 100%;
+  height: 10vh;
+  border-bottom: 1px solid rgb(39, 39, 39);
+  z-index: 1;
+  @extend %font-text;
+  font-weight: bold;
+  justify-content: center;
+}
+.main {
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+  width: 60%;
+}
+.card,
+.cardClicked {
+  cursor: pointer;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1, 10vh);
+  background-color: rgb(25, 25, 25);
+  border-bottom: 1px solid rgb(39, 39, 39);
+  .title,
+  .first,
+  .nat {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border-right: 1px solid rgb(39, 39, 39);
+    @extend %font-text;
+    font-weight: bold;
+  }
+  .first {
+    grid-column-start: 5;
+    grid-column-end: 9;
+    font-size: 14pt;
+    color: $font-first;
+    font-weight: 100;
+    letter-spacing: 1px;
+  }
+  .nat {
+    grid-column-start: 9;
+    grid-column-end: 11;
+    justify-content: center;
+  }
+  .arrowWrap {
+    grid-column-start: 11;
+    grid-column-end: 13;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    @extend %flex-centered;
+    .arrow,
+    .arrowClicked {
+      height: 8px;
+      width: 8px;
+      border-top: 2px solid rgb(85, 85, 85);
+      border-right: 2px solid rgb(85, 85, 85);
+      transform: rotate(45deg);
+    }
+    .arrow:hover,
+    .arrowClicked:hover {
+      border-top: 2px solid $font-first;
+      border-right: 2px solid $font-first;
+    }
+    .arrowClicked {
+      transform: rotate(135deg);
+    }
+  }
+}
+.card:hover {
+  background-color: rgb(28, 28, 28);
+}
+.cardClicked {
+  grid-template-rows: repeat(6, 10vh);
+  background-color: rgb(28, 28, 28);
+  .imgWrap {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    @extend %flex-centered;
+    justify-content: left;
+    .img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      border: 1px solid rgb(39, 39, 39);
+    }
+  }
+  .genderLabel,
+  .gender,
+  .ageLabel,
+  .age,
+  .dateLabel,
+  .date {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    @extend %font-text;
+  }
+  .ageLabel,
+  .age {
+    grid-column-start: 7;
+    grid-column-end: 9;
+  }
+  .age,
+  .gender {
+    justify-content: center;
+    color: $font-light;
+  }
+  .dateLabel,
+  .date {
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }
+  .date {
+    justify-content: flex-end;
+    color: $font-light;
+  }
+  .contact {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    @extend %font-text;
+  }
+  .cell {
+    grid-column-start: 2;
+    grid-column-end: 7;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    @extend %font-text;
+    text-align: left;
+    border-top: 1px solid rgb(39, 39, 39);
+    border-bottom: 1px solid rgb(39, 39, 39);
+    color: $font-light;
+  }
+
+  .email {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    @extend %font-text;
+    color: $font-light;
+  }
+  .adress {
+    grid-column-start: 7;
+    grid-column-end: 12;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    @extend %font-text;
+  }
+  .street {
+    grid-column-start: 7;
+    grid-column-end: 12;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    @extend %font-text;
+    text-align: left;
+    border-top: 1px solid rgb(39, 39, 39);
+    border-bottom: 1px solid rgb(39, 39, 39);
+    color: $font-light;
+  }
+  .city {
+    grid-column-start: 7;
+    grid-column-end: 12;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    @extend %font-text;
+    color: $font-light;
+  }
+}
+.footer {
+  margin-top: 90vh;
+  background-color: rgb(31, 31, 31);
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  border-top: 1px solid rgb(39, 39, 39);
+  @extend %font-text;
+  font-weight: bold;
+  justify-content: center;
+}
